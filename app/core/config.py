@@ -34,6 +34,12 @@ class Settings(BaseSettings):
     POSTGRES_DB: str = "ecommerce_db"
     DATABASE_URL: Union[str, None] = None
 
+    DB_POOL_SIZE: int = 10
+    DB_MAX_OVERFLOW: int = 20
+    DB_POOL_TIMEOUT: int = 30
+    DB_POOL_RECYCLE: int = 1800
+    BB_ECHO: bool = False
+
     @computed_field
     def async_database_url(self) -> str:
         if self.DATABASE_URL:

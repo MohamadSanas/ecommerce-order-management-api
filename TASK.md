@@ -27,10 +27,10 @@ This project is built to directly prepare for the **SimHealth Backend Internship
 ## 📊 Overall Progress Dashboard
 
 - **Total Tasks:** 36
-- **Completed Tasks:** 7
-- **In Progress:** 2
+- **Completed Tasks:** 8
+- **In Progress:** 1
 - **Remaining:** 27
-- **Progress:** `[████░░░░░░░░░░░░░░░░] 19%`
+- **Progress:** `[████░░░░░░░░░░░░░░░░] 22%`
 
 ---
 
@@ -67,15 +67,15 @@ This project is built to directly prepare for the **SimHealth Backend Internship
 ### Phase 2: Database Layer & Async SQLAlchemy 2.0 (SimHealth Week 3)
 **Objective:** Establish asynchronous database connectivity with PostgreSQL using modern SQLAlchemy 2.0 syntax, connection pooling, and FastAPI dependency injection.
 
-- [] **Task 2.1: Async Database Engine & Session Factory**
+- [x] **Task 2.1: Async Database Engine & Session Factory**
   - *What to do:* Create `create_async_engine` and `async_sessionmaker` in `app/database/session.py`.
   - *How to do it:* Connect using `postgresql+asyncpg://...`, configure pool size, recycle timeout, and `echo` flag for SQL query logging in development.
   - *Internship Value:* SimHealth requires async/await throughout. Async database drivers (`asyncpg`) prevent event-loop blocking under high concurrent loads.
-- [ ] **Task 2.2: Declarative Base & Reusable Mixins**
+- [x] **Task 2.2: Declarative Base & Reusable Mixins**
   - *What to do:* Set up SQLAlchemy 2.0 `DeclarativeBase` with timestamp mixins (`created_at`, `updated_at`, `id`).
   - *How to do it:* Create `app/database/base.py` using `Mapped` and `mapped_column` type annotations (SQLAlchemy 2.0 standard).
   - *Internship Value:* Type hints in ORM models catch schema discrepancies at development time rather than runtime.
-- [ ] **Task 2.3: Database Session Dependency Injection (`get_db`)**
+- [x] **Task 2.3: Database Session Dependency Injection (`get_db`)**
   - *What to do:* Implement an `async def get_db()` generator yielding an `AsyncSession` with proper context management.
   - *How to do it:* Define dependency in `app/api/deps.py` with `try ... finally await session.close()`.
   - *Internship Value:* SimHealth Week 2 & 3 core topic: FastAPI Dependency Injection ensures sessions are properly released back to the pool, preventing connection leaks.
