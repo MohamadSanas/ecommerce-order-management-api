@@ -27,10 +27,10 @@ This project is built to directly prepare for the **SimHealth Backend Internship
 ## 📊 Overall Progress Dashboard
 
 - **Total Tasks:** 36
-- **Completed Tasks:** 8
+- **Completed Tasks:** 10
 - **In Progress:** 1
-- **Remaining:** 27
-- **Progress:** `[████░░░░░░░░░░░░░░░░] 22%`
+- **Remaining:** 25
+- **Progress:** `[██████░░░░░░░░░░░░░░] 28%`
 
 ---
 
@@ -85,7 +85,7 @@ This project is built to directly prepare for the **SimHealth Backend Internship
 ### Phase 3: Database Migrations with Alembic (SimHealth Week 3)
 **Objective:** Manage relational database schema evolution through version-controlled Alembic migrations.
 
-- [ ] **Task 3.1: Alembic Async Setup**
+- [x] **Task 3.1: Alembic Async Setup**
   - *What to do:* Initialize Alembic with async template (`alembic init -t async alembic`).
   - *How to do it:* Modify `alembic/env.py` to import `Base.metadata` from `app.database.base` and dynamically inject `DATABASE_URL` from `app.core.config.settings`.
   - *Internship Value:* Understand how Alembic inspects metadata to compare against live database state.
@@ -99,7 +99,7 @@ This project is built to directly prepare for the **SimHealth Backend Internship
 ### Phase 4: Core Domain Models & Schemas (SimHealth Week 1, 2 & 3)
 **Objective:** Model relational e-commerce entities in SQLAlchemy 2.0 and validate inputs/outputs with Pydantic v2.
 
-- [ ] **Task 4.1: User Model & Schemas**
+- [x] **Task 4.1: User Model & Schemas**
   - *What to do:* Create `User` model (`id`, `email`, `hashed_password`, `full_name`, `role`, `is_active`) and schemas (`UserCreate`, `UserUpdate`, `UserOut`).
   - *How to do it:* Use `EmailStr` from Pydantic, define user roles enum (`customer`, `admin`), and configure `from_attributes = True`.
   - *Internship Value:* Pydantic v2 data validation, email formatting, and sensitive field masking (`hashed_password` never returned in output).

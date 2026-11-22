@@ -43,7 +43,25 @@ class Settings(BaseSettings):
     @computed_field
     def async_database_url(self) -> str:
         if self.DATABASE_URL:
-            return self.DATABASE_URL
+            url = self.DATABASE_URL
+            # 1. Convert postgresql:// to postgresql+asyncpg://
+            if url.startswith("postgresql://"):
+                url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+            elif url.startswith("postgres://"):
+                url = url.replace("postgres://", "postgresql+asyncpg://", 1)
+            
+            # 2. asyncpg uses ssl=require instead of sslmode=require
+            if "sslmode=require" in url:
+                url = url.replace("sslmode=require", "ssl=require")
+                
+            # 3. Strip channel_binding (not supported by asyncpg query params)
+            if "&channel_binding=require" in url:
+                url = url.replace("&channel_binding=require", "")
+            elif "?channel_binding=require" in url:
+                url = url.replace("?channel_binding=require", "")
+
+            return url
+
         return (
             f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@"
             f"{self.POSTGRES_SERVER}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
